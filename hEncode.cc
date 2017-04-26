@@ -1,4 +1,4 @@
-//note: weight = frequency + 1 for leaves
+//note: weight = frequency for leaves
 #include <fstream>
 #include "simon_func.h"
 using namespace std;
