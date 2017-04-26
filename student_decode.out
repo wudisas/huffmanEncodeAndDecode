@@ -1,0 +1,110 @@
+The clauses of if and while containing statements must be enclosed in braces (i.e. {}).
+Expressions may contain only variable names, integers (written in decimal without a sign), function calls, memory allocation (i.e., operator new), unary & and *, and the binary (two operand) versions of the following operators:
+    + - * / % == != <= >= < >
+Arrays of consecutive integers may be dynamically allocated using new and delete [], but their elements can be accessed only using pointer dereferences, because WLP4 does not include the C++ operator []. The // notation (and only the // notation) may be used for comments.
+Example WLP4 Program
+//
+// WLP4 Program to compute:
+//   a^b if 0 <= a,b < 10
+//   -1 otherwise
+//
+
+int wain(int a, int b) {
+   int counter = 0;
+   int product = 0;
+   product = 0-1;  // only binary minus
+   if (a >= 0) {
+      if (b >= 0) {
+         if (a < 10) {
+            if (b < 10) {
+               product = 1;
+               counter = 0;
+               while (counter < b) {
+                  product = product * a;
+                  counter = counter + 1;
+               }
+            } else {} // must have else
+         } else {} 
+      } else {} 
+   } else {}
+   return product;
+}
+Notable differences between WLP4 and C/C++
+Functions
+Functions in WLP4 can only have one return statement, which must be at the very end.
+int max(int a, int b){
+  if (a > b){
+    return a; // cannot return here
+  } else {
+    return b; // or here
+  }
+  // must return here
+}
+Fixed for WLP4, the above code looks like this:
+int max(int a, int b){
+  int answer = 0;
+  if (a > b){
+    answer = a;
+  } else {
+    answer = b;
+  }
+  return answer;
+}
+Local Variable Declarations
+Within a function body, all the local variables must be declared at the beginning of the function, before any other code. 
+Variables can only be initialized to a single number or NULL.
+int average(int a, int b){
+  int sum = 0;
+  sum = a + b;
+  int average = sum / 2;
+  return average;
+}
+Fixed for WLP4:
+int average(int a, int b){
+  int sum = 0;
+  int average = 0;
+  sum = a + b;
+  average = sum / 2;
+  return average;
+}
+if-statements
+if-statements must have an else statement (though it can be empty). The conditions for an if or a while must be singular - logical AND (&&) and OR (||) do not exist in WLP4. There is no else if in WLP4.
+int max3(int a, int b, int c){
+  int answer = 0;
+  if (a > b && a > c){ // cannot use "&&"
+    answer = a;
+  } else if (b > a && b > c){ // or "else if"
+    answer = b;
+  } else {
+    answer = c;
+  }
+  return answer;
+}
+Fixed for WLP4:
+int max3(int a, int b, int c){
+  int answer = 0;
+  if (a > b) {
+    if (a > c) {
+      answer = a;
+    } else {
+      answer = c;
+    }
+  } else {
+    if (b > c){
+      answer = b;
+    } else {
+      answer = c;
+    }
+  }
+  return answer;
+}
+Arrays
+There are no "arrays" in WLP4, though pointers can be dereferenced to achieve the same effect.
+int getlast(int* begin, int size){
+  return begin[size - 1]; 
+}
+Fixed for WLP4:
+int getlast(int* begin, int size){
+  return *(begin + size - 1); 
+}
+

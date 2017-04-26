@@ -1,0 +1,4 @@
+#!/bin/bash
+make
+./HEncode < b.txt > student_encode.out
+./HDecode < student_encode.out > student_decode.out
