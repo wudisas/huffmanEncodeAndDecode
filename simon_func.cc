@@ -1,3 +1,4 @@
+//Since templates in .cc file need further initialization from the user, I simply put all templates in .h file.
 #include "simon_func.h"
 using namespace std;
 
