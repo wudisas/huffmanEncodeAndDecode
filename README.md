@@ -7,4 +7,4 @@ Requirement: Linux Environment, c++14 standard
 To use encode or decode:
 1. type "make" in your linux terminal.
 2. if you want to use encode, type "./HEncode < textFileName".
-3. if you want to use decode, type "./HDecode < encodeFileName".
+3. if you want to use decode, type "./HDecode < encodedFileName".
